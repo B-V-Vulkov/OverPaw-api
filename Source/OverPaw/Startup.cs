@@ -1,26 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using OverPaw.Configuration;
-
 namespace OverPaw
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Tokens;
+    using OverPaw.Configuration;
+    using System;
+    using System.Text;
+
     public class Startup
     {
-        private readonly string allowSpecificOrigins = "allowSpecificOrigins";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -41,19 +33,10 @@ namespace OverPaw
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
-
-                //options.AddPolicy(allowSpecificOrigins,
-                //builder =>
-                //{
-                //    builder.WithOrigins("http://localhost:4200")
-                //        .AllowAnyHeader()
-                //        .AllowAnyMethod();
-                //});
             });
 
             // Configure strongly typed settings objects
-            var jwtSettingsSection =
-                        Configuration.GetSection("JwtSettings");
+            var jwtSettingsSection = Configuration.GetSection("JwtSettings");
             services.Configure<JwtSettings>(jwtSettingsSection);
 
             // Configure JWT authentication
@@ -71,7 +54,9 @@ namespace OverPaw
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
@@ -93,9 +78,9 @@ namespace OverPaw
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

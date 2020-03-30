@@ -1,11 +1,13 @@
 ﻿namespace OverPaw.Controllers
 {
-    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using OverPaw.Configuration;
     using OverPaw.InputModels.Account;
+    using OverPaw.Models;
+    using System;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
@@ -25,21 +27,28 @@
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUserInputModel loginUser)
         {
+            throw new Exception();
+
+            var user = new LoginUserModel();
+
             // Data Base validation
-            if (loginUser.UserName != "Bobi")
+            if (loginUser.Password != "1234")
             {
-                return Unauthorized();
+                user.Status = 0;
+                return Ok(user);
             }
 
             // Authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this.jwtSettings);
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Expires = DateTime.UtcNow.AddMinutes(1),
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, loginUser.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, "secretPasss1234")
+                    new Claim(ClaimTypes.Email, loginUser.Email),
+                    new Claim(ClaimTypes.Role, "User"),
                 }),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
@@ -47,10 +56,13 @@
                 )
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            tokenHandler.WriteToken(token);
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+            string jwt = tokenHandler.WriteToken(token);
 
-            return Ok();
+            user.Status = 1;
+            user.Token = jwt;
+
+            return Ok(user);
         }
 
         [HttpGet("get")]
