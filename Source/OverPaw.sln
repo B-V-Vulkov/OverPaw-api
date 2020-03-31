@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverPaw", "OverPaw\OverPaw.csproj", "{B1995424-F695-4151-BE5F-78A887C54463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverPaw.Services", "OverPaw.Services\OverPaw.Services.csproj", "{E4F06E9E-C898-4D11-9633-35D44C6F2E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverPaw.Services", "OverPaw.Services\OverPaw.Services.csproj", "{E4F06E9E-C898-4D11-9633-35D44C6F2E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverPaw.Services.Models", "OverPaw.Services.Models\OverPaw.Services.Models.csproj", "{8F934086-1020-40CA-8A9E-941A10639086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E4F06E9E-C898-4D11-9633-35D44C6F2E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4F06E9E-C898-4D11-9633-35D44C6F2E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4F06E9E-C898-4D11-9633-35D44C6F2E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F934086-1020-40CA-8A9E-941A10639086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F934086-1020-40CA-8A9E-941A10639086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F934086-1020-40CA-8A9E-941A10639086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F934086-1020-40CA-8A9E-941A10639086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
