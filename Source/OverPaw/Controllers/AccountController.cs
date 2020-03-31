@@ -27,8 +27,6 @@
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUserInputModel loginUser)
         {
-            throw new Exception();
-
             var user = new LoginUserModel();
 
             // Data Base validation

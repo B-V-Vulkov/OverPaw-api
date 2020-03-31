@@ -8,6 +8,8 @@ namespace OverPaw
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using OverPaw.Configuration;
+    using OverPaw.Services;
+    using OverPaw.Services.Contracts;
     using System;
     using System.Text;
 
@@ -61,7 +63,7 @@ namespace OverPaw
             });
 
             // Configure DI for application services
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
