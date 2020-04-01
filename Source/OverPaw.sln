@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverPaw.Data.Models", "Over
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverPaw.Commons", "OverPaw.Commons\OverPaw.Commons.csproj", "{083391AB-2531-4D18-B0D7-3B274BC703E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverPaw.Security", "OverPaw.Security\OverPaw.Security.csproj", "{2B19272E-27B8-49B8-8AA0-7CB42E701E37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverPaw.Security", "OverPaw.Security\OverPaw.Security.csproj", "{2B19272E-27B8-49B8-8AA0-7CB42E701E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverPaw.RequestModels", "OverPaw.RequestModels\OverPaw.RequestModels.csproj", "{3024D345-AF73-48B7-B054-EB24A483C367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{2B19272E-27B8-49B8-8AA0-7CB42E701E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B19272E-27B8-49B8-8AA0-7CB42E701E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B19272E-27B8-49B8-8AA0-7CB42E701E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3024D345-AF73-48B7-B054-EB24A483C367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3024D345-AF73-48B7-B054-EB24A483C367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3024D345-AF73-48B7-B054-EB24A483C367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3024D345-AF73-48B7-B054-EB24A483C367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

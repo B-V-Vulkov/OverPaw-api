@@ -1,6 +1,6 @@
-﻿namespace OverPaw.Models
+﻿namespace OverPaw.Services.Models.Account
 {
-    public class LoginUserModel
+    public class LoginResultServiceModel
     {
         public int Status { get; set; }
 

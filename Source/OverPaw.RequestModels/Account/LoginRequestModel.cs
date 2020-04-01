@@ -1,6 +1,6 @@
-﻿namespace OverPaw.InputModels.Account
+﻿namespace OverPaw.RequestModels.Account
 {
-    public class LoginUserInputModel
+    public class LoginRequestModel
     {
         public string Email { get; set; }
 

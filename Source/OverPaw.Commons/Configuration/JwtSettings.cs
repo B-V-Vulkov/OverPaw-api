@@ -1,4 +1,4 @@
-﻿namespace OverPaw.Configuration
+﻿namespace OverPaw.Commons.Configuration
 {
     public class JwtSettings
     {

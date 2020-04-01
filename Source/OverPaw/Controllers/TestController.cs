@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-using OverPaw.Models;
 using OverPaw.Services.Contracts;
 
 namespace OverPaw.Controllers
@@ -16,23 +15,23 @@ namespace OverPaw.Controllers
     [Authorize]
     public class TestController : ControllerBase
     {
-        private readonly IUserService userService;
+        private readonly IAccountService userService;
 
-        public TestController(IUserService userService)
+        public TestController(IAccountService userService)
         {
             this.userService = userService;
         }
 
-        [HttpGet("get")]
-        public async Task<IActionResult> Get()
-        {
-            var user = new TestUser()
-            {
-                Name = "Pesho",
-            };
+        //[HttpGet("get")]
+        //public async Task<IActionResult> Get()
+        //{
+        //    var user = new TestUser()
+        //    {
+        //        Name = "Pesho",
+        //    };
 
-            var test = await userService.GetAll();
-            return Ok(test);
-        }
+        //    var test = await userService.GetAll();
+        //    return Ok(test);
+        //}
     }
 }

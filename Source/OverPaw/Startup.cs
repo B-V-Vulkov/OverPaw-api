@@ -9,7 +9,7 @@ namespace OverPaw
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
-    using OverPaw.Configuration;
+    using OverPaw.Commons.Configuration;
     using OverPaw.Data;
     using OverPaw.Services;
     using OverPaw.Services.Contracts;
@@ -67,14 +67,14 @@ namespace OverPaw
             });
 
             // Configure DI for application services
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddDbContext<OverPawDbContext>(options =>
             {
                 options.UseSqlServer(this.configuration.GetConnectionString("OverPawConnection"));
             });
 
-            services.AddAutoMapper(typeof(IUserService).Assembly);
+            services.AddAutoMapper(typeof(IAccountService).Assembly);
                 
         }
 

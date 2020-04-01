@@ -1,7 +1,6 @@
 ﻿namespace OverPaw.Data.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     public class User
     {
@@ -11,7 +10,7 @@
 
         public string Email { get; set; }
 
-        public string Password { get; set; }
+        public string HashedPassword { get; set; }
 
         public string FirstName { get; set; }
 

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OverPaw.RequestModels\OverPaw.RequestModels.csproj" />
     <ProjectReference Include="..\OverPaw.Services\OverPaw.Services.csproj" />
   </ItemGroup>
 

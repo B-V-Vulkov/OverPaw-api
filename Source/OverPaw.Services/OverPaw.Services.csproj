@@ -6,10 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OverPaw.Commons\OverPaw.Commons.csproj" />
     <ProjectReference Include="..\OverPaw.Data\OverPaw.Data.csproj" />
+    <ProjectReference Include="..\OverPaw.RequestModels\OverPaw.RequestModels.csproj" />
+    <ProjectReference Include="..\OverPaw.Security\OverPaw.Security.csproj" />
     <ProjectReference Include="..\OverPaw.Services.Models\OverPaw.Services.Models.csproj" />
   </ItemGroup>
 

@@ -14,7 +14,7 @@ namespace OverPaw.Data.Migrations
                     UserId = table.Column<string>(maxLength: 100, nullable: false),
                     UserName = table.Column<string>(maxLength: 100, nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: false),
-                    Password = table.Column<string>(maxLength: 100, nullable: false),
+                    HashedPassword = table.Column<string>(maxLength: 100, nullable: false),
                     FirstName = table.Column<string>(maxLength: 100, nullable: false),
                     FamilyName = table.Column<string>(maxLength: 100, nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),

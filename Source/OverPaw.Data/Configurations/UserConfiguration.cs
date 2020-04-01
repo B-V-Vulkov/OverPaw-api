@@ -22,7 +22,7 @@
                 .IsUnicode(true)
                 .HasMaxLength(100);
 
-            user.Property(x => x.Password)
+            user.Property(x => x.HashedPassword)
                 .IsRequired(true)
                 .HasMaxLength(100);
 
@@ -46,6 +46,7 @@
                 .IsRequired(false);
 
             user.Property(x => x.IsDeleted)
+                .IsRequired(true)
                 .HasDefaultValue(false);
         }
     }
