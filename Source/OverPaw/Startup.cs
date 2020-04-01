@@ -1,13 +1,16 @@
 namespace OverPaw
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using OverPaw.Configuration;
+    using OverPaw.Data;
     using OverPaw.Services;
     using OverPaw.Services.Contracts;
     using System;
@@ -64,6 +67,14 @@ namespace OverPaw
 
             // Configure DI for application services
             services.AddScoped<IUserService, UserService>();
+
+            services.AddDbContext<OverPawDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("OverPawConnection"));
+            });
+
+            services.AddAutoMapper(typeof(IUserService).Assembly);
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
