@@ -1,8 +1,8 @@
 ﻿namespace OverPaw.Data
 {
-    using System;
     using System.Reflection;
     using Microsoft.EntityFrameworkCore;
+
     using OverPaw.Data.Models;
 
     public class OverPawDbContext : DbContext
@@ -15,9 +15,7 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<User>().ToTable("Users");
-
-            // modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -18,12 +18,13 @@ namespace OverPaw
 
     public class Startup
     {
+        private readonly IConfiguration configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -41,7 +42,7 @@ namespace OverPaw
             });
 
             // Configure strongly typed settings objects
-            var jwtSettingsSection = Configuration.GetSection("JwtSettings");
+            var jwtSettingsSection = this.configuration.GetSection("JwtSettings");
             services.Configure<JwtSettings>(jwtSettingsSection);
 
             // Configure JWT authentication
@@ -70,7 +71,7 @@ namespace OverPaw
 
             services.AddDbContext<OverPawDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("OverPawConnection"));
+                options.UseSqlServer(this.configuration.GetConnectionString("OverPawConnection"));
             });
 
             services.AddAutoMapper(typeof(IUserService).Assembly);

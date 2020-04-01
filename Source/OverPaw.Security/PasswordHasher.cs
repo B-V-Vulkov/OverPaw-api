@@ -16,7 +16,6 @@
                 throw new ArgumentNullException("password");
             }
 
-            // Produce a version 0 (see comment above) text hash.
             byte[] salt;
             byte[] subkey;
 
@@ -32,7 +31,6 @@
             return Convert.ToBase64String(outputBytes);
         }
 
-        // hashedPassword must be of the format of HashWithPassword (salt + Hash(salt+input)
         public static bool VerifyHashedPassword(string hashedPassword, string password)
         {
             if (hashedPassword == null)
@@ -46,11 +44,8 @@
 
             var hashedPasswordBytes = Convert.FromBase64String(hashedPassword);
 
-            // Verify a version 0 (see comment above) text hash.
-
             if (hashedPasswordBytes.Length != (1 + SALT_SIZE + PBKDF2_SUBKEY_LENGTH) || hashedPasswordBytes[0] != 0x00)
             {
-                // Wrong length or version header.
                 return false;
             }
 
@@ -67,7 +62,6 @@
             return ByteArraysEqual(storedSubkey, generatedSubkey);
         }
 
-        // Compares two byte arrays for equality. The method is specifically written so that the loop is not optimized.
         private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
             if (ReferenceEquals(a, b))
