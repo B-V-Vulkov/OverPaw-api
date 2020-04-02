@@ -22,16 +22,10 @@ namespace OverPaw.Controllers
             this.userService = userService;
         }
 
-        //[HttpGet("get")]
-        //public async Task<IActionResult> Get()
-        //{
-        //    var user = new TestUser()
-        //    {
-        //        Name = "Pesho",
-        //    };
-
-        //    var test = await userService.GetAll();
-        //    return Ok(test);
-        //}
+        [HttpGet("get")]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(this.User.Identity.Name);
+        }
     }
 }

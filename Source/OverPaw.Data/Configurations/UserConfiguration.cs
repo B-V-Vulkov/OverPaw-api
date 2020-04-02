@@ -3,7 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    using OverPaw.Data.Models;
+    using Data.Models;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

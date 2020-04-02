@@ -3,11 +3,12 @@
     using System.Reflection;
     using Microsoft.EntityFrameworkCore;
 
-    using OverPaw.Data.Models;
+    using Data.Models;
 
     public class OverPawDbContext : DbContext
     {
-        public OverPawDbContext(DbContextOptions<OverPawDbContext> options) : base(options)
+        public OverPawDbContext(DbContextOptions<OverPawDbContext> options) 
+            : base(options)
         {
         }
 

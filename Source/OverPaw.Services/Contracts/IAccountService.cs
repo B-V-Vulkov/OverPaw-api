@@ -2,8 +2,8 @@
 {
     using System.Threading.Tasks;
 
-    using OverPaw.RequestModels.Account;
-    using OverPaw.Services.Models.Account;
+    using RequestModels.Account;
+    using Services.Models.Account;
 
     public interface IAccountService
     {
