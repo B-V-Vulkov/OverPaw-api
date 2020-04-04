@@ -17,7 +17,7 @@
                 .IsRequired(true)
                 .HasMaxLength(100);
 
-            user.Property(x => x.UserName)
+            user.Property(x => x.Username)
                 .IsRequired(true)
                 .IsUnicode(true)
                 .HasMaxLength(100);

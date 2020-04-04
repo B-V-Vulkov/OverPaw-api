@@ -37,13 +37,21 @@
         {
             RegisterResultServiceModel registerResult = new RegisterResultServiceModel();
 
+            registerResult.IsEmailTaken = dbContext.Users.Any(x => x.Email == requestModel.Email);
+            registerResult.IsUsenameTaken = dbContext.Users.Any(x => x.Username == requestModel.Username);
+
+            if (registerResult.IsEmailTaken || registerResult.IsUsenameTaken)
+            {
+                return registerResult;
+            }
+
             try
             {
                 var user = new User()
                 {
                     UserId = Guid.NewGuid().ToString(),
                     HashedPassword = HashPassword(requestModel.Password),
-                    UserName = requestModel.UserName,
+                    Username = requestModel.Username,
                     Email = requestModel.Email,
                     FirstName = requestModel.FirstName,
                     FamilyName = requestModel.FamilyName,
@@ -86,7 +94,7 @@
                 }
 
                 loginResult.Status = 1;
-                loginResult.Token = CreateJwt(user.UserName);
+                loginResult.Token = CreateJwt(user.Username);
 
                 return loginResult;
             }
@@ -96,9 +104,8 @@
             }
         }
 
-        private string CreateJwt(string userName)
+        private string CreateJwt(string username)
         {
-            // Authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this.jwtSettings);
 
@@ -107,7 +114,7 @@
                 Expires = DateTime.UtcNow.AddDays(1),
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, userName)
+                    new Claim(ClaimTypes.Name, username)
                 }),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
